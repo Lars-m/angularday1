@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="TodoApp">
+  <head>
+    <title>Start Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <style>
+      .done-true  {text-decoration: line-through; color : gray}
+    </style>
+  </head>
+  <body>
+    <div class="container" ng-controller="TodoController as ctrl">
+      <h1>Angular Todo Demo</h1>
+      <h3>Total todos: {{ctrl.totalTodos()}}</h3>
+      <div class="form-group">
+        <label>New Todo</label>
+        <input type="text" ng-model="ctrl.formTodoText">
+        <button class="btn btn-primary" ng-click="ctrl.addTodo()">Add</button>
+      </div>
+      <ul style="list-style-type: none">
+        <li ng-repeat="todo in ctrl.todos">
+          <input type="checkbox" ng-model="todo.done">
+          <span class="done-{{todo.done}}">{{todo.text}}</span>
+        </li>    
+      </ul>
+      <button class="btn btn-warning" ng-click="ctrl.deleteCompleted()">
+        Delete Completed</button>
+    </div>
+  </body>
+</html>
